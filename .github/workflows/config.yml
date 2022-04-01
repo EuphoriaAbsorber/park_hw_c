@@ -17,19 +17,31 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
-
-        - name: Creating Build Dir
-          run: mkdir build
-
-        - name: Changing Dir
-          run: cd build
-
-        - name: Cmake
-          run: cmake ..
-
-        - name: Make
-          run: make
+        
+        - name: Installing GCC
+          run: apt-get update && sudo apt-get install -y gcc g++
           
+        - name: Install CMAKE
+          run: sudo apt-get install -y cmake
+          
+        - name: Install Valgrind
+          run: sudo apt-get install -y valgrind
+          
+        - name: Install GTest
+          run: 
+            sudo apt-get install -y libgtest-dev
+            cd /usr/src/gtest
+            sudo cmake CMakeLists.txt
+            sudo make
+            sudo cp *.a /usr/lib
+
+        - name: Building
+          run: 
+            mkdir build
+            cd build
+            cmake ..
+            make
+
         - name: Unit Valgrind Testing
           run: 
            cd tests

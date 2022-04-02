@@ -31,7 +31,7 @@ jobs:
       - name: Move
         shell: bash
         run: |
-          cd /home/runner/work
+          cd /home/runner/work/park_hw_c
           mkdir build
           ls -R
           cd build

@@ -27,18 +27,11 @@ jobs:
           sudo cp *.a /usr/lib
               
       - uses: actions/checkout@v2
-      
-      - name: Move
-        shell: bash
-        run: |
-          mkdir build
-          ls -R
-          cd build
         
       - name: Building
         shell: bash
         run: |
-          cmake ..
+          cmake CMakeLists.txt
           make
       - name: Unit Valgrind Testing
         run: |

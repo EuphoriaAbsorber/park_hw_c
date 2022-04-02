@@ -32,6 +32,7 @@ jobs:
       - name: Move
         shell: bash
         run: |
+          cd /home/runner/work
           mkdir build
           cd build
           ls

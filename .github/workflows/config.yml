@@ -23,10 +23,8 @@ jobs:
           cd /usr/src/gtest
           sudo cmake CMakeLists.txt
           sudo make
-          sudo cp libgtest* /usr/lib
-          sudo cp libgtest_main* /usr/lib
-          sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a
-          sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+          sudo cp *.a /usr/lib
+          
       - uses: actions/checkout@v2
       - name: Building
         shell: bash

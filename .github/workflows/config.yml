@@ -15,8 +15,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
-    env: 
-      working-directory: ./src
+    
     steps:
       - name: Install GTest
         run: |
@@ -28,12 +27,13 @@ jobs:
           
       - name: Install Cmake
         run: sudo apt-get install cmake
+        
+      - uses: actions/checkout@v1 
 
       
       - name: Move
         shell: bash
         run: |
-          cd ${{env.working-directory}}
           cd ..
           mkdir build
           ls -R

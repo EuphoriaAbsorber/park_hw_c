@@ -1,0 +1,45 @@
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main]
+
+  pull_request:
+    branches: [ main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    
+    steps:
+      - name: Install GTest
+        run: |
+          sudo apt-get install libgtest-dev
+          cd /usr/src/gtest
+          sudo cmake CMakeLists.txt
+          sudo make
+          sudo cp *.a /usr/lib
+          
+      - name: Installs
+        run: |
+          sudo apt-get install cppcheck
+          sudo apt-get install clang-tidy
+          sudo apt-get install valgrind
+              
+      - uses: actions/checkout@v2
+        
+      - name: Building
+        shell: bash
+        run: |
+          cmake CMakeLists.txt
+          make
+      - name: Unit Valgrind Testing
+        run: |
+         cd tests
+         valgrind --tool=memcheck --leak-check=yes ./testlib

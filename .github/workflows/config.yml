@@ -25,13 +25,13 @@ jobs:
           sudo cp *.a /usr/lib
           
         
-      - uses: actions/checkout@v3
-
+      - uses: actions/checkout@v2
+        with:
+          ref: br5
       
       - name: Move
         shell: bash
         run: |
-          cd ..
           mkdir build
           ls -R
           cd build

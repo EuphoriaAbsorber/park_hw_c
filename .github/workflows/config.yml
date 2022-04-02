@@ -24,6 +24,9 @@ jobs:
           sudo make
           sudo cp *.a /usr/lib
           
+      - name: Install Cmake
+        run: sudo apt-get install cmake
+          
       - uses: actions/checkout@v2
       
       - name: Move

@@ -25,6 +25,11 @@ jobs:
           sudo cmake CMakeLists.txt
           sudo make
           sudo cp *.a /usr/lib
+          
+      - name: Installs
+        run: |
+          sudo apt-get install cppcheck
+          sudo apt-get install clang-tidy
               
       - uses: actions/checkout@v2
         

@@ -26,10 +26,17 @@ jobs:
           
       - uses: actions/checkout@v2
       
+      - name: Move
+        shell: bash
+        run: |
+          mkdir build
+          cd build
+          ls
+      
       - name: Building
         shell: bash
         run: |
-          cmake CMakeLists.txt
+          cmake ..
           make
 
       - name: Unit Valgrind Testing

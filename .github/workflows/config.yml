@@ -3,6 +3,8 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main]
 
   pull_request:
     branches: [ main]
@@ -23,11 +25,8 @@ jobs:
           sudo cmake CMakeLists.txt
           sudo make
           sudo cp *.a /usr/lib
-          
-        
+              
       - uses: actions/checkout@v2
-        with:
-          ref: br5
       
       - name: Move
         shell: bash
@@ -35,9 +34,7 @@ jobs:
           mkdir build
           ls -R
           cd build
-          
-         
-      
+        
       - name: Building
         shell: bash
         run: |

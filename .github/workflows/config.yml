@@ -6,7 +6,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, br5 ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -25,10 +25,8 @@ jobs:
           sudo make
           sudo cp *.a /usr/lib
           
-      - name: Install Cmake
-        run: sudo apt-get install cmake
         
-      - uses: actions/checkout@v1 
+      - uses: actions/checkout@v3
 
       
       - name: Move

@@ -26,16 +26,17 @@ jobs:
           
       - name: Install Cmake
         run: sudo apt-get install cmake
-          
-      - uses: actions/checkout@v2
+
       
       - name: Move
         shell: bash
         run: |
           cd /home/runner/work
           mkdir build
+          ls -R
           cd build
-          ls
+          
+         
       
       - name: Building
         shell: bash
